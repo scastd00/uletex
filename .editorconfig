@@ -1,0 +1,25 @@
+root = true
+
+[*]
+indent_style = tab
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+ij_continuation_indent_size = 8
+ij_formatter_off_tag = @formatter:off
+ij_formatter_on_tag = @formatter:on
+ij_formatter_tags_enabled = true
+ij_smart_tabs = false
+ij_visual_guides = 90
+ij_wrap_on_typing = false
+
+[{*.glstex,*.tex}]
+ij_visual_guides = 85,110
+ij_latex_keep_first_column_comment = true
+ij_latex_keep_indents_on_empty_lines = false
+ij_latex_line_comment_add_space = false
+ij_latex_line_comment_at_first_column = true
+ij_latex_wrap_long_lines = true
+max_line_length = 120

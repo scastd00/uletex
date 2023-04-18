@@ -1,0 +1,94 @@
+%! Author = samuel
+%! Date = 21/9/22
+
+% Preamble
+\documentclass[a4paper,12pt]{report}
+
+% Packages
+% Spanish-specific commands
+\usepackage[spanish]{babel}
+% Set the font (output) encodings
+\usepackage[T1]{fontenc}
+% Set the input encoding
+\usepackage[utf8]{inputenc}
+\usepackage{extramarks} % Todo: check if this can be removed or not
+\usepackage[hidelinks]{hyperref} % Automatic links in TOC and hides red border
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{caption}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{setspace}
+\usepackage{color}
+\usepackage{pagecolor}
+\usepackage[explicit,compact]{titlesec}
+\usepackage[cache=false]{minted}
+\usepackage{pdfpages}
+
+\usemintedstyle{manni}
+
+\usepackage[backend=biber,sorting=none]{biblatex}
+\addbibresource{bibliography.bib}
+
+% Todo: Delete when making the final document
+%\pagecolor{white!55!black}
+
+% Set the margins to the pages
+\geometry{
+	a4paper,
+	top=3cm,
+	left=3cm,
+	bottom=2.5cm,
+	right=2.5cm
+}
+\title{Trabajo Final de Grado}
+\author{C.D. Samuel}
+\date{June 2023}
+
+\input{config}
+
+\usepackage[automake]{glossaries}
+\usepackage{eurosym}
+\usepackage{booktabs}
+
+\makeglossaries
+\glsaddall
+
+\captionsetup{width=0.8\textwidth, justification=centerlast}
+
+% Document
+\begin{document}
+	\input{cover}
+	\clearpage
+	\input{info}
+	\clearpage
+
+	\renewcommand{\contentsname}{Índice de contenidos}
+	\pagenumbering{roman}
+	\tableofcontents
+
+	\cleardoublepage
+	\listoffigures
+	\addcontentsline{toc}{chapter}{\listfigurename}
+
+	\cleardoublepage
+	\renewcommand{\listtablename}{Índice de cuadros y tablas}
+	\listoftables
+	\addcontentsline{toc}{chapter}{\listtablename}
+
+	\clearpage
+	\pagenumbering{arabic} % Reset to normal numbers from here
+
+	\begin{spacing}{1.5}
+		% Here goes the main content
+	\end{spacing}
+
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{Bibliografía}
+
+	\printbibliography
+\end{document}
