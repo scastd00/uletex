@@ -1,27 +1,9 @@
 \pagestyle{fancy}
 \renewcommand{\sectionmark}[1]{\markright{\textsl{\thesection.\ #1}}}
-\fancyhead{} % Clear all header fields
-\fancyhead[R]{Página \thepage\ de~\pageref{LastPage}} % Ignore warning
-\fancyhead[L]{\rightmark}
-\fancyfoot{} % Clear all footer fields
-\fancyfoot[R]{Nombre del autor}
-\fancyfoot[L]{
-	\raisebox{-0.4\height}{\includegraphics[scale=0.36]{imageULE}}
-}
 
 % Horizontal line at top and bottom of page
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.2pt}
-
-\fancypagestyle{plain}{ % Index and chapter pages
-	\fancyhf{} % Clear header and footer
-	\fancyhead[R]{\thepage}
-	\renewcommand{\footrulewidth}{0pt}
-%	\fancyfoot[R]{Nombre del autor}
-%	\fancyfoot[L]{
-%		\raisebox{-0.4\height}{\includegraphics[scale=0.4]{imageULE}}
-%	}
-}
 
 \newcommand{\chapterFont}[1]{{\bfseries{\fontsize{28pt}{0pt}\selectfont{#1}}}}
 \newcommand{\sectionFont}[1]{{\bfseries{\uppercase{\fontsize{14pt}{0pt}\selectfont{#1}}}}}
@@ -30,12 +12,21 @@
 \titleformat{\chapter}[hang]{\bfseries}{\chapterFont{\thechapter.}}{15pt}{\chapterFont{#1}}
 \titleformat{\section}[hang]{\bfseries}{\sectionFont{\thesection.}}{15pt}{\sectionFont{#1}}
 \titleformat{\subsection}[hang]{\bfseries}{\sectionFont{\thesubsection.}}{15pt}{\sectionFont{#1}}
+\titleformat{\subsubsection}[hang]{\bfseries}{\sectionFont{\thesubsubsection.}}{15pt}{\sectionFont{#1}}
+%\titleformat{\paragraph}[hang]{\bfseries}{\sectionFont{\theparagraph.}}{15pt}{\sectionFont{#1}}
 
+% Espaciado entre títulos y texto (ver https://tex.stackexchange.com/questions/53338/reducing-spacing-after-headings)
 \titlespacing*{\chapter}{0pt}{-5pt}{12pt} % Remove space before chapter title
+\titlespacing*{\section}{0pt}{18pt}{12pt}
+\titlespacing*{\subsection}{0pt}{18pt}{12pt}
+\titlespacing*{\subsubsection}{0pt}{18pt}{12pt}
+%\titlespacing*{\paragraph}{0pt}{18pt}{12pt}
 
 \newcommand{\chaptr}[2]{\chapter{#1}\label{ch:#2}}
 \newcommand{\sect}[2]{\section{#1}\label{sec:#2}}
 \newcommand{\subsect}[2]{\subsection{#1}\label{subsec:#2}}
+\newcommand{\subsubsect}[2]{\subsubsection{#1}\label{subsubsec:#2}}
+%\newcommand{\subsubsubsect}[2]{\paragraph{#1}\label{par:#2}}
 
 \newcommand{\monoFont}[1]{\texttt{#1}}
 \newcommand{\boldFont}[1]{\textbf{#1}}

@@ -3,9 +3,9 @@
 
 % Packages
 % Spanish-specific commands
-\usepackage[spanish]{babel}
+\usepackage[spanish,es-tabla]{babel}
 % Set the font (output) encodings
-\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
 % Set the input encoding
 \usepackage[utf8]{inputenc}
 \usepackage{extramarks}
@@ -22,9 +22,15 @@
 \usepackage{setspace}
 \usepackage{color}
 \usepackage{pagecolor}
+\usepackage{colortbl}
 \usepackage[explicit,compact]{titlesec}
 \usepackage[cache=false]{minted}
 \usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{tocloft}
 
 \usemintedstyle{manni}
 
@@ -50,9 +56,27 @@
 \usepackage{booktabs}
 
 \makeglossaries
+\loadglsentries{glosario} % Ignore warning
 \glsaddall
 
 \captionsetup{width=0.8\textwidth, justification=centerlast}
+
+% Set the numbering of deeper levels of sections, and the depth of the table of contents
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\fancyhead{} % Clear all header fields
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage} % Ignore warning
+\fancyfoot{} % Clear all footer fields
+\fancypagestyle{plain}{ % Index and chapter pages
+	\fancyhf{} % Clear header and footer
+	\fancyhead[R]{\thepage}
+	\renewcommand{\footrulewidth}{0pt} % Remove footer line
+}
+
+\renewcommand{\cftfigfont}{Figura~}
+\renewcommand{\cfttabfont}{Tabla~}
 
 % Document
 \begin{document}
@@ -70,12 +94,26 @@
 	\addcontentsline{toc}{chapter}{\listfigurename}
 
 	\cleardoublepage
-	\renewcommand{\listtablename}{Índice de cuadros y tablas}
+	\renewcommand{\listtablename}{Índice de tablas}
 	\listoftables
 	\addcontentsline{toc}{chapter}{\listtablename}
 
 	\clearpage
 	\pagenumbering{arabic} % Reset to normal numbers from here
+
+	\fancyhead{} % Clear all header fields
+	\fancyhead[R]{Página \thepage\ de~\pageref{LastPage}} % Ignore warning
+	\fancyhead[L]{\rightmark}
+	\fancyfoot{} % Clear all footer fields
+	\fancyfoot[R]{Samuel Castrillo Domínguez}
+	\fancyfoot[L]{
+		\raisebox{-0.4\height}{\includegraphics[scale=0.36]{imageULE}}
+	}
+	\fancypagestyle{plain}{ % Chapter pages
+		\fancyhf{} % Clear header and footer
+		\fancyhead[R]{Página \thepage\ de~\pageref{LastPage}}
+		\renewcommand{\footrulewidth}{0pt} % Remove footer line
+	}
 
 	\begin{spacing}{1.5}
 		%% INCLUDES %%
@@ -83,6 +121,9 @@
 
 	\cleardoublepage
 	\addcontentsline{toc}{chapter}{Bibliografía}
-
 	\printbibliography
+
+	\begin{spacing}{1.5}
+		\input{chapters/anexos}
+	\end{spacing}
 \end{document}
